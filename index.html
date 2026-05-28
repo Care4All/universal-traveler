@@ -39,6 +39,17 @@
     }
   </style>
 </head>
+<script>
+function runSearch() {
+  const value = document.getElementById("searchBox").value;
+  const results = document.getElementById("results");
+
+  if (!value) {
+    results.innerText = "Please type something to search.";
+    return;
+  }
+
+  results.innerText = "Searching accessible options for: " + value + " (demo mode)";
 
 <body>
 
@@ -56,7 +67,21 @@
   <p>Start building a global map of accessible travel options.</p>
 
   <input 
-    type="text" 
+  id="searchBox"
+  type="text" 
+  placeholder="Search cities, hotels, experiences..."
+  style="padding:10px; width:80%; border-radius:8px; border:1px solid #ccc;"
+/>
+
+<br><br>
+
+<button onclick="runSearch()">
+  Search (Demo)
+</button>
+
+<p id="results"></p>
+
+    
     placeholder="Search cities, hotels, experiences..." 
     style="padding:10px; width:80%; border-radius:8px; border:1px solid #ccc;"
   />
