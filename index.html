@@ -51,7 +51,7 @@ function runSearch() {
 
   results.innerText = "Searching accessible options for: " + value + " (demo mode)";
 
-<body>
+  <body>
 
   <h1>Universal Traveler</h1>
 
@@ -129,6 +129,17 @@ function runSearch() {
       Coming Soon
     </button>
   </div>
+<script>
+function runSearch() {
+  const value = document.getElementById("searchBox").value;
+  const results = document.getElementById("results");
+
+  if (!value) {
+    results.innerText = "Please type something to search.";
+    return;
+  }
+
+  results.innerText = "Searching accessible options for: " + value + " (demo mode)";
 
 </body>
 
