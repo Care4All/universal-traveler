@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <title>Universal Traveler | Accessible Travel For Everyone</title>
 
@@ -37,110 +37,104 @@
       border-radius: 8px;
       cursor: pointer;
     }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
-<script>
-function runSearch() {
-  const value = document.getElementById("searchBox").value;
-  const results = document.getElementById("results");
 
-  if (!value) {
-    results.innerText = "Please type something to search.";
-    return;
-  }
-
-  results.innerText = "Searching accessible options for: " + value + " (demo mode)";
-
-  <body>
+<body>
 
   <h1>Universal Traveler</h1>
 
   <p>
-  Discover accessible hotels, experiences,
-  transportation, and community reviews —
-  built for travelers of all abilities.
-</p>
+    Discover accessible hotels, experiences,
+    transportation, and community reviews —
+    built for travelers of all abilities.
+  </p>
 
-
-<div class="card">
-  <h2>Search Accessible Places</h2>
-  <p>Start building a global map of accessible travel options.</p>
-
-  <input 
-  id="searchBox"
-  type="text" 
-  placeholder="Search cities, hotels, experiences..."
-  style="padding:10px; width:80%; border-radius:8px; border:1px solid #ccc;"
-/>
-
-<br><br>
-
-<button onclick="runSearch()">
-  Search (Demo)
-</button>
-
-<p id="results"></p>
-
-    
-    placeholder="Search cities, hotels, experiences..." 
-    style="padding:10px; width:80%; border-radius:8px; border:1px solid #ccc;"
-  />
-
-  <br><br>
-
-  <button>
-    Search (Coming Soon)
-  </button>
-</div>
-
-      
   <div class="card">
-  <h2>Accessibility Reviews</h2>
+    <h2>Search Accessible Places</h2>
 
-  <p>
-    Real travelers sharing wheelchair access,
-    sensory-friendly spaces, elevator access,
-    bathroom accessibility, and more.
-  </p>
+    <p>
+      Start building a global map of accessible travel options.
+    </p>
 
-  <button>
-    Community Powered
-  </button>
-</div>
+    <input
+      id="searchBox"
+      type="text"
+      placeholder="Search cities, hotels, experiences..."
+    />
 
-<div class="card">
-  <h2>Accessible Experiences</h2>
+    <br><br>
 
-  <p>
-    Discover beaches, tours, restaurants,
-    and activities designed for everyone.
-  </p>
+    <button onclick="runSearch()">
+      Search (Demo)
+    </button>
 
-  <button>
-    Explore Soon
-  </button>
-</div>
-  <h2>Find Accessible Hotels</h2>
-    <p>Search places designed for all abilities.</p>
+    <p id="results"></p>
+  </div>
+
+  <div class="card">
+    <h2>Accessibility Reviews</h2>
+
+    <p>
+      Real travelers sharing wheelchair access,
+      sensory-friendly spaces, elevator access,
+      bathroom accessibility, and more.
+    </p>
+
+    <button>
+      Community Powered
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>Accessible Experiences</h2>
+
+    <p>
+      Discover beaches, tours, restaurants,
+      and activities designed for everyone.
+    </p>
+
+    <button>
+      Explore Soon
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>Find Accessible Hotels</h2>
+
+    <p>
+      Search places designed for all abilities.
+    </p>
 
     <button>
       Coming Soon
     </button>
   </div>
-<script>
-function runSearch() {
-  const value = document.getElementById("searchBox").value;
-  const results = document.getElementById("results");
 
-  if (!value) {
-    results.innerText = "Please type something to search.";
-    return;
-  }
+  <script>
+    function runSearch() {
+      const value = document.getElementById("searchBox").value;
+      const results = document.getElementById("results");
 
-  results.innerText = "Searching accessible options for: " + value + " (demo mode)";
+      if (!value) {
+        results.innerText = "Please type something to search.";
+        return;
+      }
+
+      results.innerText =
+        "Searching accessible options for: " +
+        value +
+        " (demo mode)";
+    }
+  </script>
 
 </body>
 
 </html>
-
-
