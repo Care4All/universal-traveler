@@ -74,10 +74,28 @@
 .hero h2 {
   font-size: 2rem;
 }
-
+<div class="badges">
+  <span>♿ Wheelchair Friendly</span>
+  <span>🔊 Sensory Friendly</span>
+  <span>🦮 Service Animal Friendly</span>
+</div>
 .hero p {
   margin-top: 15px;
   line-height: 1.6;
+}.badges {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.badges span {
+  background: rgba(255,255,255,0.2);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  backdrop-filter: blur(4px);
 }
     .nav {
   position: sticky;
