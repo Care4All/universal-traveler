@@ -82,11 +82,32 @@ Help us understand your travel needs.
 
 <br><br>
 
-<button>
+<button onclick="showProfile()">
 Begin Assessment
 </button>
 
-</div>
+<p id="profile"></p>
 
+</div>
+<script>
+function showProfile() {
+
+  const profile =
+`
+Travel Readiness Profile
+
+Mobility Support: Moderate
+
+Fatigue Consideration: Moderate
+
+Surface Sensitivity: Moderate
+
+Travel Planning Recommendation:
+Structured planning recommended.
+`;
+
+  document.getElementById("profile").innerText = profile;
+}
+</script>
 </body>
 </html>
