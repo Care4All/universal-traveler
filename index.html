@@ -54,7 +54,31 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px auto;
+}
 
+.stat-box {
+  background: white;
+  padding: 20px;
+  width: 160px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.stat-box h2 {
+  color: #14b8a6;
+  margin: 0;
+}
+
+.stat-box p {
+  margin-top: 10px;
+  font-size: 14px;
+}
     .nav {
       position: sticky;
       bottom: 0;
@@ -84,7 +108,22 @@
     Discover accessible hotels, experiences, transportation, and community reviews —
     built for travelers of all abilities.
   </p>
+<div class="stats">
+  <div class="stat-box">
+    <h2>1,200+</h2>
+    <p>Accessible Locations</p>
+  </div>
 
+  <div class="stat-box">
+    <h2>85+</h2>
+    <p>Traveler Reviews</p>
+  </div>
+
+  <div class="stat-box">
+    <h2>42</h2>
+    <p>Partner Cities</p>
+  </div>
+</div>
   <div class="card">
     <h2>Search Accessible Places</h2>
     <p>Start building a global map of accessible travel options.</p>
