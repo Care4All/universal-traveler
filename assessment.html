@@ -128,7 +128,29 @@ function showProfile() {
   const stepfree = document.getElementById("stepfree").value;
 
   let priority = "Moderate";
+let drains = "";if (fatigue === "Often") {
+  drains += "- Fatigue\n";
+}
 
+if (oxygen === "Yes, regularly") {
+  drains += "- Oxygen Planning\n";
+}
+
+if (surface === "Yes") {
+  drains += "- Uneven Surfaces\n";
+}
+
+if (caregiver === "Always") {
+  drains += "- Caregiver Coordination\n";
+}
+
+if (sensory === "Often") {
+  drains += "- Sensory Environment\n";
+}
+
+if (stepfree === "Essential") {
+  drains += "- Step-Free Access Needs\n";
+}
   if (
     mobility !== "None" ||
     fatigue === "Often" ||
@@ -143,9 +165,9 @@ function showProfile() {
 
   const profile = "Travel Readiness Profile\n\n" +
   "Accessibility Priority: " + priority + "\n\n" +
-  "Fuel Drains Identified:\n" +
-"- Fatigue\n" +
-"- Mobility Considerations\n" +
+"Fuel Drains Identified:\n" +
+drains +
+"\n" +
 "- Environmental Barriers\n\n" +
 "Travel Readiness Fuel Level:\n" +
 "🚀⛽⛽\n\n" +
