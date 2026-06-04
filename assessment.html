@@ -5,14 +5,6 @@
 
   <style>
     body {
-    pre {
-  text-align: left;
-  background: #f8fafc;
-  padding: 20px;
-  border-radius: 16px;
-  white-space: pre-wrap;
-  line-height: 1.6;
-}
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #e6f0ff, #ffffff);
       text-align: center;
@@ -41,6 +33,15 @@
       padding: 12px 20px;
       border-radius: 8px;
       cursor: pointer;
+    }
+
+    pre {
+      text-align: left;
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 16px;
+      white-space: pre-wrap;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -78,14 +79,15 @@
     <option>Occasionally</option>
     <option>Yes, regularly</option>
   </select>
-<p>Do you need access to electrical outlets for medical or mobility equipment?</p>
 
-<select id="power">
-  <option>No</option>
-  <option>Yes, for power wheelchair or scooter charging</option>
-  <option>Yes, for portable oxygen or medical equipment</option>
-  <option>Yes, for both mobility and medical equipment</option>
-</select>
+  <p>Do you need access to electrical outlets for medical or mobility equipment?</p>
+  <select id="power">
+    <option>No</option>
+    <option>Yes, for power wheelchair or scooter charging</option>
+    <option>Yes, for portable oxygen or medical equipment</option>
+    <option>Yes, for both mobility and medical equipment</option>
+  </select>
+
   <p>Do uneven surfaces make travel more difficult?</p>
   <select id="surface">
     <option>Yes</option>
@@ -129,40 +131,21 @@ function showProfile() {
   const mobility = document.getElementById("mobility").value;
   const fatigue = document.getElementById("fatigue").value;
   const oxygen = document.getElementById("oxygen").value;
-const power = document.getElementById("power").value;
+  const power = document.getElementById("power").value;
   const surface = document.getElementById("surface").value;
   const caregiver = document.getElementById("caregiver").value;
   const sensory = document.getElementById("sensory").value;
   const stepfree = document.getElementById("stepfree").value;
 
   let priority = "Moderate";
-let drains = "";if (fatigue === "Often") {
-  drains += "- Fatigue\n";
-}
+  let drains = "";
+  let refuels = "";
 
-if (oxygen === "Yes, regularly") {
-  drains += "- Oxygen Planning\n";
-}
-
-if (surface === "Yes") {
-  drains += "- Uneven Surfaces\n";
-}
-
-if (caregiver === "Always") {
-  drains += "- Caregiver Coordination\n";
-}
-
-if (sensory === "Often") {
-  drains += "- Sensory Environment\n";
-}
-
-if (stepfree === "Essential") {
-  drains += "- Step-Free Access Needs\n";
-}
   if (
     mobility !== "None" ||
     fatigue === "Often" ||
     oxygen === "Yes, regularly" ||
+    power !== "No" ||
     surface === "Yes" ||
     caregiver === "Always" ||
     sensory === "Often" ||
@@ -171,110 +154,70 @@ if (stepfree === "Essential") {
     priority = "High";
   }
 
+  if (fatigue === "Often") {
+    drains += "- Fatigue\n";
+    refuels += "🔋 Rest break planning\n";
+  }
+
+  if (oxygen === "Yes, regularly") {
+    drains += "- Oxygen Planning\n";
+    refuels += "🔋 Oxygen backup planning\n";
+  }
+
+  if (power !== "No") {
+    drains += "- Power Access / Charging Needs\n";
+    refuels += "🔋 Confirm outlet access for mobility or medical equipment\n";
+  }
+
+  if (surface === "Yes") {
+    drains += "- Uneven Surfaces\n";
+    refuels += "🔋 Accessible route verification\n";
+  }
+
+  if (caregiver === "Always") {
+    drains += "- Caregiver Coordination\n";
+    refuels += "🔋 Caregiver travel support planning\n";
+  }
+
+  if (sensory === "Often") {
+    drains += "- Sensory Environment\n";
+    refuels += "🔋 Sensory-friendly environment planning\n";
+  }
+
+  if (stepfree === "Essential") {
+    drains += "- Step-Free Access Needs\n";
+    refuels += "🔋 Elevator and step-free route confirmation\n";
+  }
+
+  if (drains === "") {
+    drains = "- No major fuel drains selected\n";
+    refuels = "🔋 Continue standard accessible travel planning\n";
+  }
+
   const profile = "Travel Readiness Profile\n\n" +
   "Accessibility Priority: " + priority + "\n\n" +
-"Fuel Drains Identified:\n" +
-drains +if (power !== "No") {
-  drains += "- Power Access / Charging Needs\n";
-}
-"\n" +
-"- Environmental Barriers\n\n" +
-"Travel Readiness Fuel Level:\n" +
-"🚀⛽⛽\n\n" +
-"Fuel Drains Identified:\n" +
-"- Fatigue\n" +
-"- Mobility Considerations\n" +
-"- Uneven Surfaces\n" +
-"- Caregiver Coordination\n" +
-"- Sensory Environment\n" +
-"- Step-Free Access Needs\n\n" +
-"Refueling Opportunities:\n" +
-"🔋 Rest Break Planning\n" +
-"🔋 Accessible Route Verification\n" +
-"🔋 Lodging Accessibility Confirmation\n" +
-"🔋 Caregiver Travel Coordination\n" +
-"🔋 Sensory-Friendly Environment Planning\n\n" +
-"Travel Readiness Fuel Level:\n" +
-"🚀⛽⛽\n\n" +
-"Fuel Drains Identified:\n" +
-"- Fatigue\n" +
-"- Mobility Considerations\n" +
-"- Uneven Surfaces\n" +
-"- Caregiver Coordination\n" +
-"- Sensory Environment\n" +
-"- Step-Free Access Needs\n\n" +
-"Refueling Opportunities:\n" +
-"🔋 Rest Break Planning\n" +
-"🔋 Accessible Route Verification\n" +
-"🔋 Lodging Accessibility Confirmation\n" +
-"🔋 Caregiver Travel Coordination\n" +
-"🔋 Sensory-Friendly Environment Planning\n\n" +
-"Travel Readiness Fuel Level:\n" +
-"🚀⛽⛽\n\n" +
-"Fuel Drains Identified:\n" +
-"- Fatigue\n" +
-"- Mobility Considerations\n" +
-"- Uneven Surfaces\n" +
-"- Caregiver Coordination\n" +
-"- Sensory Environment\n" +
-"- Step-Free Access Needs\n\n" +
-"Refueling Opportunities:\n" +
-"🔋 Rest Break Planning\n" +
-"🔋 Accessible Route Verification\n" +
-"🔋 Lodging Accessibility Confirmation\n" +
-"🔋 Caregiver Travel Coordination\n" +
-"🔋 Sensory-Friendly Environment Planning\n\n" +
-"Travel Readiness Fuel Level:\n" +
-"🚀⛽⛽\n\n" +
-"Fuel Drains Identified:\n" +
-"- Fatigue\n" +
-"- Mobility Considerations\n" +
-"- Uneven Surfaces\n" +
-"- Caregiver Coordination\n" +
-"- Sensory Environment\n" +
-"- Step-Free Access Needs\n\n" +
-"Refueling Opportunities:\n" +
-"🔋 Rest Break Planning\n" +
-"🔋 Accessible Route Verification\n" +
-"🔋 Lodging Accessibility Confirmation\n" +
-"🔋 Caregiver Travel Coordination\n" +
-"🔋 Sensory-Friendly Environment Planning\n\n" +
-"Travel Readiness Fuel Level:\n" +
-"🚀⛽⛽\n\n" +
-"Fuel Drains Identified:\n" +
-"- Fatigue\n" +
-"- Mobility Considerations\n" +
-"- Uneven Surfaces\n" +
-"- Caregiver Coordination\n" +
-"- Sensory Environment\n" +
-"- Step-Free Access Needs\n\n" +
-"Refueling Opportunities:\n" +
-"🔋 Rest Break Planning\n" +
-"🔋 Accessible Route Verification\n" +
-"🔋 Lodging Accessibility Confirmation\n" +
-"🔋 Caregiver Travel Coordination\n" +
-"🔋 Sensory-Friendly Environment Planning\n\n" +
-"Mobility Support: Moderate\n\n" +
+  "Travel Readiness Fuel Level:\n" +
+  "🚀⛽⛽⛽\n\n" +
+  "Fuel Drains Identified:\n" +
+  drains + "\n" +
+  "Refueling Opportunities:\n" +
+  refuels + "\n" +
+  "Mobility Support: " + mobility + "\n\n" +
   "Fatigue Consideration: " + fatigue + "\n\n" +
+  "Oxygen Planning: " + oxygen + "\n\n" +
+  "Power Access Needs: " + power + "\n\n" +
   "Surface Sensitivity: " + surface + "\n\n" +
   "Caregiver Support Consideration: " + caregiver + "\n\n" +
   "Sensory Environment Consideration: " + sensory + "\n\n" +
   "Step-Free Access Priority: " + stepfree + "\n\n" +
   "Travel Planning Recommendation:\n" +
-  "Structured planning recommended with attention to mobility, fatigue, sensory needs, caregiver support, and accessible route planning.\n\n" +
-  "Recommended Travel Supports:\n\n" +
-  "- Step-free route planning\n" +
-  "- Accessible lodging verification\n" +
-  "- Rest break scheduling\n" +
-  "- Wheelchair-friendly destination review\n" +
-  "- Caregiver-friendly travel preparation\n" +
-  "- Accessibility confirmation before booking\n\n" +
+  "Structured planning recommended with attention to mobility, fatigue, sensory needs, power access, caregiver support, and accessible route planning.\n\n" +
   "Destination Match:\n\n" +
   "- Step-free urban destinations\n" +
   "- Accessible beach experiences\n" +
   "- Sensory-friendly attractions\n" +
   "- Caregiver-supported travel options\n" +
-  "- Accessible hotels near medical and mobility resources";
+  "- Accessible hotels near medical, mobility, and charging resources";
 
   document.getElementById("profile").innerText = profile;
 }
