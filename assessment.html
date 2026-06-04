@@ -78,7 +78,14 @@
     <option>Occasionally</option>
     <option>Yes, regularly</option>
   </select>
+<p>Do you need access to electrical outlets for medical or mobility equipment?</p>
 
+<select id="power">
+  <option>No</option>
+  <option>Yes, for power wheelchair or scooter charging</option>
+  <option>Yes, for portable oxygen or medical equipment</option>
+  <option>Yes, for both mobility and medical equipment</option>
+</select>
   <p>Do uneven surfaces make travel more difficult?</p>
   <select id="surface">
     <option>Yes</option>
@@ -122,6 +129,7 @@ function showProfile() {
   const mobility = document.getElementById("mobility").value;
   const fatigue = document.getElementById("fatigue").value;
   const oxygen = document.getElementById("oxygen").value;
+const power = document.getElementById("power").value;
   const surface = document.getElementById("surface").value;
   const caregiver = document.getElementById("caregiver").value;
   const sensory = document.getElementById("sensory").value;
@@ -166,7 +174,9 @@ if (stepfree === "Essential") {
   const profile = "Travel Readiness Profile\n\n" +
   "Accessibility Priority: " + priority + "\n\n" +
 "Fuel Drains Identified:\n" +
-drains +
+drains +if (power !== "No") {
+  drains += "- Power Access / Charging Needs\n";
+}
 "\n" +
 "- Environmental Barriers\n\n" +
 "Travel Readiness Fuel Level:\n" +
