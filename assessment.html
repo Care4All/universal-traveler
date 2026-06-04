@@ -137,9 +137,12 @@ function showProfile() {
   const sensory = document.getElementById("sensory").value;
   const stepfree = document.getElementById("stepfree").value;
 
-  let priority = "Moderate";
-  let drains = "";
-  let refuels = "";
+ let priority = "Moderate";
+let fuel = "🚀⛽⛽⛽⛽⛽";
+let drainCount = 0;
+
+let drains = "";
+let refuels = "";
 
   if (
     mobility !== "None" ||
@@ -156,36 +159,43 @@ function showProfile() {
 
   if (fatigue === "Often") {
     drains += "- Fatigue\n";
+    drainCount++;
     refuels += "🔋 Rest break planning\n";
   }
 
   if (oxygen === "Yes, regularly") {
     drains += "- Oxygen Planning\n";
+    drainCount++;
     refuels += "🔋 Oxygen backup planning\n";
   }
 
   if (power !== "No") {
     drains += "- Power Access / Charging Needs\n";
+    drainCount++;
     refuels += "🔋 Confirm outlet access for mobility or medical equipment\n";
   }
 
   if (surface === "Yes") {
     drains += "- Uneven Surfaces\n";
+    drainCount++;
     refuels += "🔋 Accessible route verification\n";
   }
 
   if (caregiver === "Always") {
     drains += "- Caregiver Coordination\n";
+    drainCount++;
     refuels += "🔋 Caregiver travel support planning\n";
   }
 
   if (sensory === "Often") {
     drains += "- Sensory Environment\n";
+    drainCount++;
     refuels += "🔋 Sensory-friendly environment planning\n";
   }
 
   if (stepfree === "Essential") {
     drains += "- Step-Free Access Needs\n";
+    drainCount++;
     refuels += "🔋 Elevator and step-free route confirmation\n";
   }
 
@@ -193,11 +203,19 @@ function showProfile() {
     drains = "- No major fuel drains selected\n";
     refuels = "🔋 Continue standard accessible travel planning\n";
   }
-
+if (drainCount >= 5) {
+  fuel = "🚀⛽";
+}
+else if (drainCount >= 3) {
+  fuel = "🚀⛽⛽";
+}
+else if (drainCount >= 1) {
+  fuel = "🚀⛽⛽⛽⛽";
+}
   const profile = "Travel Readiness Profile\n\n" +
   "Accessibility Priority: " + priority + "\n\n" +
   "Travel Readiness Fuel Level:\n" +
-  "🚀⛽⛽⛽\n\n" +
+  fuel + "\n\n" +
   "Fuel Drains Identified:\n" +
   drains + "\n" +
   "Refueling Opportunities:\n" +
